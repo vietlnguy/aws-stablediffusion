@@ -12,4 +12,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-2
       - name: Test aws-cli
-        run: aws get-primary-email
+        run: aws s3 list-buckets
