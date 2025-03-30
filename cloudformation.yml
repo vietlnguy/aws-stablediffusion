@@ -1,4 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  MyIP:
+    Description: My IP address
+    Type: String
 Resources:
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -10,11 +14,19 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref MyIP #Temporary all access to install requirements
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref MyIP #Temporary all access to install requirements
       VpcId: vpc-0f464b3c0144dff3b
   EC2Instance:
     Type: AWS::EC2::Instance
