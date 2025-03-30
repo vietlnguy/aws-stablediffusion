@@ -48,8 +48,7 @@ Resources:
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
-            VolumeSize: 8
-            DeleteOnTermination: true
+            VolumeSize: 1
       UserData:
         Fn::Base64: !Sub |
             #!/bin/bash -xe
