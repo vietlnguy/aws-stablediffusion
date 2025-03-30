@@ -40,11 +40,17 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0efc43a4067fe9a3e
-      InstanceType: t2.xlarge
+      InstanceType: t2.micro
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
       AvailabilityZone: us-east-2a
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda  # Root volume
+          Ebs:
+            VolumeSize: 30  # Root disk size in GB
+            VolumeType: gp3  # General Purpose SSD
+            DeleteOnTermination: true
       UserData:
         Fn::Base64: !Sub |
             #!/bin/bash -xe
