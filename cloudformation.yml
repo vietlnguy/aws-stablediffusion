@@ -15,6 +15,10 @@ Resources:
           ToPort: 80
           CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
         - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+        - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
@@ -22,6 +26,10 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
+          CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
           CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
         - IpProtocol: tcp
           FromPort: 22
