@@ -44,6 +44,7 @@ Resources:
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
+      AvailabilityZone: us-east-2a
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
@@ -68,7 +69,7 @@ Resources:
     Type: AWS::EC2::VolumeAttachment
     Properties:
       InstanceId: !Ref EC2Instance
-      VolumeId: vol-04bad55bcd984e8c1
+      VolumeId: vol-0cd4e27fd2e7414b1
       Device: /dev/xvda
 
 Outputs:
