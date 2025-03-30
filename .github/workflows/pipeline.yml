@@ -11,5 +11,22 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-2
-      - name: Test aws-cli
-        run: aws s3 ls
+      - name: Provision EC2 instance
+        run: aws cloudformation deploy --template-file ../../cloudformation.yml  --stack-name stablediffustion --parameter-overrides
+
+       #- aws cloudformation delete-stack --stack-name ${STACK_NAME} --profile ${PROFILE}
+       #- aws cloudformation wait stack-delete-complete --stack-name ${STACK_NAME} --profile ${PROFILE} 
+       #- aws cloudformation deploy --template-file ./cloudformation.yml  --stack-name ${STACK_NAME} --parameter-overrides SslKey=${SSL_KEY} SslCert=${SSL_CERT} SslCertIntermediate1=${SSL_CERT_INTERMEDIATE1} SslCertIntermediate2=${SSL_CERT_INTERMEDIATE2} SslCertIntermediate3=${SSL_CERT_INTERMEDIATE3} --profile ${PROFILE} 
+       #- aws cloudformation list-exports --query "Exports[?Name==\`pwp:Ec2Dns\`].Value" --profile ${PROFILE} --output text > ec2_domain.env
+       #- export SECURITY_GROUP_ID="$(aws cloudformation list-exports --query "Exports[?Name==\`pwp:SecurityGroupId\`].Value" --profile pwp --output text)"
+       #- export HTTP_INGRESS_RULE_ID="$(aws ec2 describe-security-group-rules --profile ${PROFILE} --filter Name="group-id",Values="${SECURITY_GROUP_ID}" --output text --query "SecurityGroupRules[?IsEgress==\`false\` && IpProtocol==\`tcp\` && CidrIpv4==\`0.0.0.0/0\` && FromPort==\`80\`].SecurityGroupRuleId")"
+       #- export HTTPS_INGRESS_RULE_ID="$(aws ec2 describe-security-group-rules --profile ${PROFILE} --filter Name="group-id",Values="${SECURITY_GROUP_ID}" --output text --query "SecurityGroupRules[?IsEgress==\`false\` && IpProtocol==\`tcp\` && CidrIpv4==\`0.0.0.0/0\` && FromPort==\`443\`].SecurityGroupRuleId")"
+       #- export HTTP_EGRESS_RULE_ID="$(aws ec2 describe-security-group-rules --profile ${PROFILE} --filter Name="group-id",Values="${SECURITY_GROUP_ID}" --output text --query "SecurityGroupRules[?IsEgress==\`true\` && IpProtocol==\`tcp\` && CidrIpv4==\`0.0.0.0/0\` && FromPort==\`80\`].SecurityGroupRuleId")"
+       #- export HTTPS_EGRESS_RULE_ID="$(aws ec2 describe-security-group-rules --profile ${PROFILE} --filter Name="group-id",Values="${SECURITY_GROUP_ID}" --output text --query "SecurityGroupRules[?IsEgress==\`true\` && IpProtocol==\`tcp\` && CidrIpv4==\`0.0.0.0/0\` && FromPort==\`443\`].SecurityGroupRuleId")"
+       #- sleep 4m
+       #- aws ec2 modify-security-group-rules --profile ${PROFILE} --group-id ${SECURITY_GROUP_ID} --security-group-rules SecurityGroupRuleId=${HTTP_INGRESS_RULE_ID},SecurityGroupRule='{IpProtocol=tcp,CidrIpv4=165.123.34.86/32,FromPort=80,ToPort=80}'
+       #- aws ec2 modify-security-group-rules --profile ${PROFILE} --group-id ${SECURITY_GROUP_ID} --security-group-rules SecurityGroupRuleId=${HTTPS_INGRESS_RULE_ID},SecurityGroupRule='{IpProtocol=tcp,CidrIpv4=165.123.34.86/32,FromPort=443,ToPort=443}'
+       #- aws ec2 modify-security-group-rules --profile ${PROFILE} --group-id ${SECURITY_GROUP_ID} --security-group-rules SecurityGroupRuleId=${HTTP_EGRESS_RULE_ID},SecurityGroupRule='{IpProtocol=tcp,CidrIpv4=165.123.34.86/32,FromPort=80,ToPort=80}'
+       #- aws ec2 modify-security-group-rules --profile ${PROFILE} --group-id ${SECURITY_GROUP_ID} --security-group-rules SecurityGroupRuleId=${HTTPS_EGRESS_RULE_ID},SecurityGroupRule='{IpProtocol=tcp,CidrIpv4=165.123.34.86/32,FromPort=443,ToPort=443}'
+    
+        

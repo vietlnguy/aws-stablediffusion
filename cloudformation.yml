@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  SslCert:
+    NoEcho: true
+    Type: String
+  SslCertIntermediate1:
+    NoEcho: true
+    Type: String
+  SslCertIntermediate2:
+    NoEcho: true
+    Type: String
+  SslCertIntermediate3:
+    NoEcho: true
+    Type: String
+  SslKey:
+    NoEcho: true
+    Type: String
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Stable Diffusion ec2 security group
+      GroupName: stablediffusion
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0 #Temporary all access to install requirements
+      VpcId: vpc-0f464b3c0144dff3b
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0efc43a4067fe9a3e
+      InstanceType: t2.micro
+      KeyName: viet-key
+      SecurityGroupIds:
+        - !Ref SecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+            #!/bin/bash -xe
+            sudo dnf install -y git tar gcc zlib-devel bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
+            sudo curl https://pyenv.run | bash && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(pyenv init -)"' >> ~/.bashrc && source ~/.bashrc && pyenv install 3.12.4 && pyenv global 3.12.4
+            python -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
+            sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
+            python -m pip install -r requirements.txt
+Outputs:
+  SecurityGroupId:
+    Description: The ID of the security group attached to the EC2 instance
+    Value: !GetAtt SecurityGroup.GroupId
+    Export:
+      Name: !Sub '${AWS::StackName}:SecurityGroupId'
