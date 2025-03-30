@@ -68,7 +68,6 @@ Resources:
       InstanceId: !Ref EC2Instance
       VolumeId: vol-0cd4e27fd2e7414b1
       Device: /dev/xvdf
-
 Outputs:
   SecurityGroupId:
     Description: The ID of the security group attached to the EC2 instance
