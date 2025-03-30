@@ -46,7 +46,7 @@ Resources:
         - !Ref SecurityGroup
       AvailabilityZone: us-east-2a
       BlockDeviceMappings:
-        - DeviceName: /dev/xvda
+        - DeviceName: /dev/xvdbb
           Ebs:
             VolumeSize: 8
             DeleteOnTermination: true
@@ -70,7 +70,7 @@ Resources:
     Properties:
       InstanceId: !Ref EC2Instance
       VolumeId: vol-0cd4e27fd2e7414b1
-      Device: /dev/xvda
+      Device: /dev/xvdbb
 
 Outputs:
   SecurityGroupId:
