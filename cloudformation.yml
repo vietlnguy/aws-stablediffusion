@@ -1,20 +1,4 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Parameters:
-  SslCert:
-    NoEcho: true
-    Type: String
-  SslCertIntermediate1:
-    NoEcho: true
-    Type: String
-  SslCertIntermediate2:
-    NoEcho: true
-    Type: String
-  SslCertIntermediate3:
-    NoEcho: true
-    Type: String
-  SslKey:
-    NoEcho: true
-    Type: String
 Resources:
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
