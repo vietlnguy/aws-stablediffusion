@@ -56,7 +56,9 @@ Resources:
             sudo dnf install -y python3.12
             python3 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
             sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
-            python3 -m pip install -r requirements.txt
+            sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python3 get-pip.py
+            pip install -r requirements.txt
             
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
