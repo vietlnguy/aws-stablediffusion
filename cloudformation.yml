@@ -67,7 +67,7 @@ Resources:
   VolumeAttachment:
     Type: AWS::EC2::VolumeAttachment
     Properties:
-      InstanceId: !Ref MyEC2Instance
+      InstanceId: !Ref EC2Instance
       VolumeId: vol-04bad55bcd984e8c1
       Device: /dev/models
 
