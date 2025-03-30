@@ -57,7 +57,7 @@ Resources:
             sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
             python3 -m pip install -r requirements.txt
             
-            DEVICE_NAME="/dev/models"
+            DEVICE_NAME="/dev/xvda"
             MOUNT_POINT="/mnt/data"
             if ! blkid $DEVICE_NAME; then
               mkfs -t ext4 $DEVICE_NAME
@@ -69,7 +69,7 @@ Resources:
     Properties:
       InstanceId: !Ref EC2Instance
       VolumeId: vol-04bad55bcd984e8c1
-      Device: /dev/models
+      Device: /dev/xvda
 
 Outputs:
   SecurityGroupId:
