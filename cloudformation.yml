@@ -47,8 +47,7 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
             #!/bin/bash -xe
-            sudo dnf install -y git tar gcc zlib-devel bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
-            sudo curl https://pyenv.run | bash && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(pyenv init -)"' >> ~/.bashrc && source ~/.bashrc && pyenv install 3.12.4 && pyenv global 3.12.4
+            sudo dnf install -y python3.12
             python -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
             sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
             python -m pip install -r requirements.txt
