@@ -59,6 +59,7 @@ Resources:
             sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
             python3 get-pip.py
             pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
+            cd / && cd aws-stablediffusion
             pip install -r requirements.txt
             
             DEVICE_NAME="/dev/xvdf"
