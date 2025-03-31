@@ -59,6 +59,7 @@ Resources:
           - Effect: Allow
             Action:
               - s3:ListBucket
+              - s3:ListAllMyBuckets
               - s3:GetObject
               - s3:PutObject
             Resource:
@@ -94,7 +95,6 @@ Resources:
             pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
             cd / && cd aws-stablediffusion
             pip install -r requirements.txt
-
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
             if ! blkid $DEVICE_NAME; then
@@ -102,9 +102,6 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
-            aws configure
-
-
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
      Properties:
