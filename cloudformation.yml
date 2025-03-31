@@ -36,16 +36,48 @@ Resources:
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
       VpcId: vpc-0f464b3c0144dff3b
-  
+  EC2S3AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: EC2S3AccessRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+  S3AccessPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: S3FullAccessPolicy
+      Roles:
+        - !Ref EC2S3AccessRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - s3:ListBucket
+              - s3:GetObject
+              - s3:PutObject
+            Resource:
+              - arn:aws:s3:::vietnguy-sd-output  # Replace with your bucket name
+  EC2InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref EC2S3AccessRole
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0efc43a4067fe9a3e
-      InstanceType: g4dn.xlarge
+      InstanceType: t2.xlarge
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
       AvailabilityZone: us-east-2a
+      IamInstanceProfile: !Ref EC2InstanceProfile
       BlockDeviceMappings:
         - DeviceName: /dev/xvda  # Root volume
           Ebs:
@@ -70,6 +102,7 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
+            aws configure
 
 
   VolumeAttachment:
