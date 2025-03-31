@@ -2,7 +2,6 @@ import json
 import os
 
 with open('/aws-stablediffusion/model-requirements.json') as file:
-    overwrite = file.read()
     temp = json.load(file)
     local = temp['model_ids']
 
@@ -15,6 +14,9 @@ diff = list(set(local) - set(remote))
 for id in diff:
     command = "wget \"civitai.com/api/download/models/" + str(id) + "?token=" + os.environ['CIVITAI_KEY'] + "\" --content-disposition -P /mnt/data/models/checkpoints/"
     os.system(command)
+
+with open('/aws-stablediffusion/model-requirements.json') as file:
+    overwrite = file.read()
 
 f = open("/mnt/data/model-requirements-remote.json", "w")
 f.write(overwrite)
