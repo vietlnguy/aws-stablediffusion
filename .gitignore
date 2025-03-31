@@ -1,7 +1,6 @@
 __pycache__/
 *.py[cod]
 /output/
-/input/
 !/input/example.png
 /models/
 extra_model_paths.yaml
