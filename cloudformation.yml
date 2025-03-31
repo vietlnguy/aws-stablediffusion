@@ -60,6 +60,7 @@ Resources:
                   - s3:PutObject
                 Resource:
                   - arn:aws:s3:::vietnguy-sd-output
+                  - arn:aws:s3:::vietnguy-sd-output/*
   EC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
