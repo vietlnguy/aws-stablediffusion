@@ -41,7 +41,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0efc43a4067fe9a3e
-      InstanceType: t2.xlarge
+      InstanceType: g5.xlarge
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
@@ -70,7 +70,7 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
-            
+
 
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
