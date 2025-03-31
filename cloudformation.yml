@@ -36,6 +36,7 @@ Resources:
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
       VpcId: vpc-0f464b3c0144dff3b
+  
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -45,6 +46,12 @@ Resources:
       SecurityGroupIds:
         - !Ref SecurityGroup
       AvailabilityZone: us-east-2a
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda  # Root volume
+          Ebs:
+            VolumeSize: 30  # Root disk size in GB
+            VolumeType: gp3  # General Purpose SSD
+            DeleteOnTermination: true
       UserData:
         Fn::Base64: !Sub |
             #!/bin/bash -xe
