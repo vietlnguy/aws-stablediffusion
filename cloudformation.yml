@@ -70,11 +70,12 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
+
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
      Properties:
        InstanceId: !Ref EC2Instance
-       VolumeId: vol-0cd4e27fd2e7414b1
+       VolumeId: vol-00ad48b852d6f9c4b
        Device: /dev/xvdf
 Outputs:
   SecurityGroupId:
