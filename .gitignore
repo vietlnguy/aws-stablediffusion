@@ -3,8 +3,6 @@ __pycache__/
 /output/
 !/input/example.png
 /models/
-
-extra_model_paths.yaml
 /.vs
 .vscode/
 .idea/

@@ -21,7 +21,7 @@ def queue_prompt(prompt):
     request.urlopen(req)
 
 file_path = './api_prompts/elf_dryad.json'
-batch_size = 4
+batch_size = 1
 
 
 with open(file_path, 'r') as file:

@@ -70,6 +70,7 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
+            
 
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
