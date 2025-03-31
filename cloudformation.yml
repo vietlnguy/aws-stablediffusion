@@ -36,17 +36,6 @@ Resources:
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
       VpcId: vpc-0f464b3c0144dff3b
-  EC2S3AccessRole:
-    Type: AWS::IAM::Role
-    Properties:
-      RoleName: EC2S3AccessRole
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: ec2.amazonaws.com
-            Action: sts:AssumeRole
   S3AccessPolicy:
     Type: AWS::IAM::Policy
     Properties:
@@ -64,6 +53,20 @@ Resources:
               - s3:PutObject
             Resource:
               - arn:aws:s3:::vietnguy-sd-output  # Replace with your bucket name
+  EC2S3AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Policies: 
+        - !Ref S3 AccessPolicy
   EC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
