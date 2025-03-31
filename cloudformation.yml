@@ -36,34 +36,7 @@ Resources:
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
       VpcId: vpc-0f464b3c0144dff3b
-  S3ReadOnlyRole:
-    Type: AWS::IAM::Role
-    Properties:
-      RoleName: EC2S3AccessRole
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: ec2.amazonaws.com
-            Action: sts:AssumeRole
-  S3Policy:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: S3ReadOnlyPolicy
-      Roles:
-        - !Ref S3ReadOnlyRole
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - s3:GetObject
-              - s3:ListBucket
-            Resource:
-              - arn:aws:s3:::vietnguy-stablediffusion # Replace with your S3 bucket name
-              - arn:aws:s3:::vietnguy-stablediffusion/*  # Allows access to objects
-  InstanceProfile:
+  
     Type: AWS::IAM::InstanceProfile
     Properties:
       Roles:
@@ -76,14 +49,7 @@ Resources:
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
-      IamInstanceProfile: !Ref InstanceProfile
       AvailabilityZone: us-east-2a
-      BlockDeviceMappings:
-        - DeviceName: /dev/xvda  # Root volume
-          Ebs:
-            VolumeSize: 50  # Root disk size in GB
-            VolumeType: gp3  # General Purpose SSD
-            DeleteOnTermination: true
       UserData:
         Fn::Base64: !Sub |
             #!/bin/bash -xe
@@ -94,8 +60,12 @@ Resources:
             pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
             cd / && cd aws-stablediffusion
             pip install -r requirements.txt
-            
-            
+  VolumeAttachment:
+     Type: AWS::EC2::VolumeAttachment
+     Properties:
+       InstanceId: !Ref EC2Instance
+       VolumeId: vol-0cd4e27fd2e7414b1
+       Device: /dev/xvdf
 Outputs:
   SecurityGroupId:
     Description: The ID of the security group attached to the EC2 instance
