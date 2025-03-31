@@ -3,6 +3,9 @@ Parameters:
   MyIP:
     Description: My IP address
     Type: String
+  CivitAiKey:
+    Description: CivitAi key
+    Type: String
 Resources:
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -83,7 +86,8 @@ Resources:
             VolumeType: gp3  # General Purpose SSD
             DeleteOnTermination: true
       UserData:
-        Fn::Base64: !Sub |
+        Fn::Base64: !Sub 
+          - |
             #!/bin/bash -xe
             sudo dnf install -y python3.12 git
             sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
@@ -99,6 +103,9 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
+            export CIVITAI_KEY=${civitaikey}
+            
+          - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
      Properties:
