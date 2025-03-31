@@ -104,7 +104,7 @@ Resources:
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
-            
+            python3 /aws-stablediffusion/sync-models.py
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
