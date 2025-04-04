@@ -2,6 +2,7 @@ import json
 from urllib import request
 import random
 import os
+import time
 
 #This is the ComfyUI api prompt format.
 
@@ -13,7 +14,6 @@ import os
 
 #this is the one for the default workflow
 
-
 def queue_prompt(prompt):
     p = {"prompt": prompt}
     data = json.dumps(p).encode('utf-8')
@@ -21,8 +21,7 @@ def queue_prompt(prompt):
     request.urlopen(req)
 
 file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
-batch_size = 5
-
+batch_size = 10
 
 with open(file_path, 'r') as file:
     prompt_text = file.read()
@@ -32,12 +31,11 @@ with open(file_path, 'r') as file:
         prompt["3"]["inputs"]["seed"] = random.randint(1,4294967294)
         queue_prompt(prompt)
 
-
-
 path = os.getenv("DIR_PATH")
 file_count 0;
 while file_count != (batch_size + 1):
     _, _, files = next(os.walk(path))
     file_count = len(files)
     print("Images generated: " + file_count)
+    time.sleep(30)
 
