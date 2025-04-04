@@ -102,10 +102,10 @@ Resources:
             sudo mkdir -p $MOUNT_POINT
             sudo mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
-            sudo python /aws-stablediffusion/sync-models.py
-            sudo nohup python /aws-stablediffusion/main.py > output.log 2>&1 &
+            sudo python3 /aws-stablediffusion/sync-models.py
+            sudo nohup python3 /aws-stablediffusion/main.py > output.log 2>&1 &
             sudo sleep 15
-            sudo python /aws-stablediffusion/script_examples/basic_api_example.py
+            sudo python3 /aws-stablediffusion/script_examples/basic_api_example.py
             aws s3 cp /aws-stablediffusion/output s3://vietnguy-sd-output --recursive
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
