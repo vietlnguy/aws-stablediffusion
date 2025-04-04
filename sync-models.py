@@ -11,7 +11,7 @@ with open('/aws-stablediffusion/model-requirements.json') as file:
     local_controlnet = temp['controlnet_ids']
     local_diffusers = temp ['diffusers_ids']
     local_diffusion_models = temp['diffusion_model_ids']
-    local_embeddings = temp['embeddings_ids'],
+    local_embeddings = temp['embeddings_ids']
     local_gligen = temp['gligen_ids']
     local_hypernetworks = temp['hypernetworks_ids']
     local_loras = temp['loras_ids']
@@ -33,7 +33,7 @@ with open('/mnt/data/model-requirements-remote.json') as file:
     remote_controlnet = temp['controlnet_ids']
     remote_diffusers = temp ['diffusers_ids']
     remote_diffusion_models = temp['diffusion_model_ids']
-    remote_embeddings = temp['embeddings_ids'],
+    remote_embeddings = temp['embeddings_ids']
     remote_gligen = temp['gligen_ids']
     remote_hypernetworks = temp['hypernetworks_ids']
     remote_loras = temp['loras_ids']
