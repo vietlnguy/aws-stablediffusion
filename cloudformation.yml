@@ -105,8 +105,9 @@ Resources:
               export CIVITAI_KEY=${civitaikey}
               python3 /home/ec2-user/aws-stablediffusion/sync-models.py
               nohup python3 /home/ec2-user/aws-stablediffusion/main.py > output.log 2>&1 &
-              sleep 15
+              sleep 30
               python3 /home/ec2-user/aws-stablediffusion/script_examples/basic_api_example.py
+              sleep 30
               aws s3 cp /home/ec2-user/aws-stablediffusion/output s3://vietnguy-sd-output --recursive
             EOF
             
