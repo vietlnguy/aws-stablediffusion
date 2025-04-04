@@ -105,13 +105,16 @@ Resources:
               export CIVITAI_KEY=${civitaikey}
               sudo chown ec2-user:ec2-user /mnt/data/model-requirements-remote.json
               python3 /home/ec2-user/aws-stablediffusion/sync-models.py
-              nohup python3 /home/ec2-user/aws-stablediffusion/main.py > output.log 2>&1 &
+              BASE_DIR="/home/ec2-user/aws-stablediffusion/output"
+              TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+              DIR_PATH="$BASE_DIR/$TIMESTAMP"
+              sudo mkdir -p "$DIR_PATH"
+              nohup python3 /home/ec2-user/aws-stablediffusion/main.py --output-directory $DIR_PATH > output.log 2>&1 &
               while ! nc -z localhost 8188; do   
                 sleep 1
               done
               python3 /home/ec2-user/aws-stablediffusion/script_examples/basic_api_example.py
-              sleep 30
-              aws s3 cp /home/ec2-user/aws-stablediffusion/output s3://vietnguy-sd-output --recursive
+              aws s3 cp $DIR_PATH s3://vietnguy-sd-output --recursive
             EOF
             
           - civitaikey: !Ref CivitAiKey
