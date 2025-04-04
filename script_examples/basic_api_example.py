@@ -32,10 +32,10 @@ with open(file_path, 'r') as file:
         queue_prompt(prompt)
 
 path = os.getenv("DIR_PATH")
-file_count 0;
+file_count = 0;
 while file_count != (batch_size + 1):
     _, _, files = next(os.walk(path))
     file_count = len(files)
-    print("Images generated: " + file_count)
+    print("Images generated: " + str(file_count))
     time.sleep(30)
 
