@@ -1,8 +1,8 @@
 {
   "3": {
     "inputs": {
-      "seed": 503124860435778,
-      "steps": 40,
+      "seed": 122658449490318,
+      "steps": 100,
       "cfg": 7,
       "sampler_name": "euler",
       "scheduler": "normal",
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1girl, mucha style, fantasy Drawing, knight, red eyes, red hair, long hair, ponytail, thighs, breasts, cleavage, shoulder pauldrons, silver armour, gauntlets, greatsword, perfect sword, straight sword",
+      "text": "1girl, mucha style, fantasy Drawing, knight, elf, Olivine_green eyes, pointy ears, green hair, long hair, hair flower, holding, armor, leaf, shoulder armor, breasts, cleavage, pauldrons, feathers, leaf armored dress, armored boots,",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(CyberRealistic_Negative-neg), bad-hands5, deformed, low quality, multiple hands, multiple arms, realistic, bad pose, low quality, low res, blurry, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch, duplicate, ugly, monochrome, geometry, mutation, disgusting, bad anatomy, three hands",
+      "text": "(CyberRealistic_Negative-neg), bad-hands5, deformed, low quality, multiple hands, multiple arms, bad pose, realistic",
       "clip": [
         "4",
         1
@@ -106,7 +106,7 @@
   },
   "11": {
     "inputs": {
-      "model_name": "RealESRGAN_x4plus.pth"
+      "model_name": "realesrganX4plus_v1.pt"
     },
     "class_type": "UpscaleModelLoader",
     "_meta": {
@@ -147,8 +147,8 @@
   },
   "14": {
     "inputs": {
-      "seed": 254425825038357,
-      "steps": 40,
+      "seed": 197566852166637,
+      "steps": 100,
       "cfg": 7,
       "sampler_name": "euler",
       "scheduler": "normal",
