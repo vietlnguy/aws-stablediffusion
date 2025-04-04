@@ -109,6 +109,8 @@ Resources:
               TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
               DIR_PATH="$BASE_DIR/$TIMESTAMP"
               sudo mkdir -p "$DIR_PATH"
+              sudo chown ec2-user:ec2-user $DIR_PATH
+              chmod u+wx $DIR_PATH
               nohup python3 /home/ec2-user/aws-stablediffusion/main.py --output-directory $DIR_PATH > output.log 2>&1 &
               while ! nc -z localhost 8188; do   
                 sleep 1
