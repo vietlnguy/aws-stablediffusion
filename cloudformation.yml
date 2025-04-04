@@ -89,7 +89,7 @@ Resources:
         Fn::Base64: !Sub 
           - |
             #!/bin/bash -xe
-            sudo dnf install -y python3.12 git python3-pip
+            sudo dnf install -y python3.12 git python3-pip nmap-ncat
             sleep 30
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
@@ -106,7 +106,9 @@ Resources:
               sudo chown ec2-user:ec2-user /mnt/data/model-requirements-remote.json
               python3 /home/ec2-user/aws-stablediffusion/sync-models.py
               nohup python3 /home/ec2-user/aws-stablediffusion/main.py > output.log 2>&1 &
-              sleep 30
+              while ! nc -z localhost 8188; do   
+                sleep 1
+              done
               python3 /home/ec2-user/aws-stablediffusion/script_examples/basic_api_example.py
               sleep 30
               aws s3 cp /home/ec2-user/aws-stablediffusion/output s3://vietnguy-sd-output --recursive
