@@ -92,6 +92,7 @@ Resources:
             sudo dnf install -y python3.12 git
             git clone https://github.com/vietlnguy/aws-stablediffusion.git
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            sudo dnf install python3-pip -y
             pip install -r /home/ec2-user/aws-stablediffusion/requirements.txt
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
