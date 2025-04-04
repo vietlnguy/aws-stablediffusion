@@ -2,7 +2,7 @@ import json
 import os
 
 #CLONE MODELS
-with open('/aws-stablediffusion/model-requirements.json') as file:
+with open('/home/ec2-user/aws-stablediffusion/model-requirements.json') as file:
     temp = json.load(file)
     local_models = temp['model_ids']
     local_clip = temp['clip_ids']
