@@ -38,7 +38,7 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIp: !Ref MyIP #Temporary all access to install requirements
-      VpcId: vpc-0f464b3c0144dff3b
+      VpcId: vpc-03e441f3ef5b69a19
   EC2S3AccessRole:
     Type: AWS::IAM::Role
     Properties:
