@@ -14,7 +14,6 @@ import random
 
 
 def queue_prompt(prompt):
-    print("called")
     p = {"prompt": prompt}
     data = json.dumps(p).encode('utf-8')
     req =  request.Request("http://127.0.0.1:8188/prompt", data=data)

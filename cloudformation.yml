@@ -93,7 +93,6 @@ Resources:
             git clone https://github.com/vietlnguy/aws-stablediffusion.git
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
             sudo dnf install python3-pip -y
-            pip install -r /aws-stablediffusion/requirements.txt
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
             if ! blkid $DEVICE_NAME; then
@@ -102,9 +101,11 @@ Resources:
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
+            pip install -r /aws-stablediffusion/requirements.txt
             python /aws-stablediffusion/sync-models.py
-            nohup python /aws-stablediffusion/main.py & python /aws-stablediffusion/script_examples/basic_api_example.py
-            aws s3 sync /aws-stablediffusion/output s3://vietnguy-sd-output
+            nohup python /aws-stablediffusion/main.py > output.log 2>&1 &
+            python /aws-stablediffusion/script_examples/basic_api_example.py
+            aws s3 cp /aws-stablediffusion/output s3://vietnguy-sd-output --recursive
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
