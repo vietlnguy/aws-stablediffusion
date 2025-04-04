@@ -90,6 +90,7 @@ Resources:
           - |
             #!/bin/bash -xe
             sudo dnf install -y python3.12 git python3-pip
+            sleep 30
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
             if ! blkid $DEVICE_NAME; then
