@@ -121,7 +121,7 @@ for id in diff18:
     os.system(command)
 
 
-with open('/aws-stablediffusion/model-requirements.json') as file:
+with open('/home/ec2-user/aws-stablediffusion/model-requirements.json') as file:
     overwrite = file.read()
 
 f = open("/mnt/data/model-requirements-remote.json", "w")
