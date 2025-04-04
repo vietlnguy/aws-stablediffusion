@@ -72,7 +72,7 @@ Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0efc43a4067fe9a3e
+      ImageId: ami-00a929b66ed6e0de6
       InstanceType: g5.xlarge
       KeyName: viet-key
       SecurityGroupIds:
