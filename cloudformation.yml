@@ -89,10 +89,11 @@ Resources:
         Fn::Base64: !Sub 
           - |
             #!/bin/bash -xe
-            sudo dnf install -y python3.12 git
+            sudo su
+            dnf install -y python3.12 git
             git clone https://github.com/vietlnguy/aws-stablediffusion.git
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            sudo dnf install python3-pip -y
+            dnf install python3-pip -y
             pip install -r /aws-stablediffusion/requirements.txt
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
@@ -103,8 +104,8 @@ Resources:
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
             python /aws-stablediffusion/sync-models.py
-            pip install -r /aws-stablediffusion/requirements.txt
             nohup python /aws-stablediffusion/main.py > output.log 2>&1 &
+            sleep 15
             python /aws-stablediffusion/script_examples/basic_api_example.py
             aws s3 cp /aws-stablediffusion/output s3://vietnguy-sd-output --recursive
           - civitaikey: !Ref CivitAiKey
