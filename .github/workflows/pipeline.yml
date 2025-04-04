@@ -13,11 +13,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
-      - name: Provision EC2 instance
+      - name: Create stack and generate images
         run: aws cloudformation deploy --template-file cloudformation.yml --region us-east-1 --stack-name stablediffusion --capabilities CAPABILITY_NAMED_IAM --parameter-overrides CivitAiKey=${{ secrets.CIVITAI_KEY }} MyIP=${{ secrets.MY_IP }}
+      - name: Delete stack
+        run: aws cloudformation delete-stack --stack-name stablediffusion
 
-       # test test
-       #- aws cloudformation delete-stack --stack-name ${STACK_NAME} --profile ${PROFILE}
        #- aws cloudformation wait stack-delete-complete --stack-name ${STACK_NAME} --profile ${PROFILE} 
        #- aws cloudformation deploy --template-file ./cloudformation.yml  --stack-name ${STACK_NAME} --parameter-overrides SslKey=${SSL_KEY} SslCert=${SSL_CERT} SslCertIntermediate1=${SSL_CERT_INTERMEDIATE1} SslCertIntermediate2=${SSL_CERT_INTERMEDIATE2} SslCertIntermediate3=${SSL_CERT_INTERMEDIATE3} --profile ${PROFILE} 
        #- aws cloudformation list-exports --query "Exports[?Name==\`pwp:Ec2Dns\`].Value" --profile ${PROFILE} --output text > ec2_domain.env

@@ -21,7 +21,7 @@ def queue_prompt(prompt):
     request.urlopen(req)
 
 file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
-batch_size = 10
+batch_size = 5
 
 with open(file_path, 'r') as file:
     prompt_text = file.read()

@@ -71,6 +71,9 @@ Resources:
         - !Ref EC2S3AccessRole
   EC2Instance:
     Type: AWS::EC2::Instance
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT60M  # CloudFormation waits up to 15 minutes
     Properties:
       ImageId: ami-0feb5cbbf7a1ebe0c
       InstanceType: g5.xlarge
@@ -119,12 +122,13 @@ Resources:
               while true; do
                   file_count=$(find "$DIR_PATH" -maxdepth 1 -type f | wc -l)
                   echo "Images generated: $file_count"
-                  if [ "$file_count" -ge 11 ]; then
+                  if [ "$file_count" -ge 5 ]; then
                       break
                   fi
                   sleep 30
               done
-              aws s3 cp $DIR_PATH s3://vietnguy-sd-output --recursive
+              aws s3 cp $BASE_DIR s3://vietnguy-sd-output --recursive
+              /opt/aws/bin/cfn-signal --exit-code $? --stack stablediffusion --resource EC2Instance --region us-east-1
             EOF
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
