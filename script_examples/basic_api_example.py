@@ -20,7 +20,7 @@ def queue_prompt(prompt):
     req =  request.Request("http://127.0.0.1:8188/prompt", data=data)
     request.urlopen(req)
 
-file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
+file_path = '/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
 batch_size = 1
 
 
