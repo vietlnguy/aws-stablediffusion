@@ -3,9 +3,6 @@ Parameters:
   MyIP:
     Description: My IP address
     Type: String
-  CivitAiKey:
-    Description: CivitAi key
-    Type: String
 Resources:
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup

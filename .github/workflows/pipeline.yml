@@ -14,7 +14,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
       - name: Provision EC2 instance
-        run: aws cloudformation deploy --template-file cloudformation.yml --region us-east-1 --stack-name stablediffusion --capabilities CAPABILITY_NAMED_IAM --parameter-overrides MyIP=${{ secrets.MY_IP }} CivitAiKey=${{ secrets.CIVITAI_KEY }}
+        run: aws cloudformation deploy --template-file cloudformation.yml --region us-east-1 --stack-name stablediffusion --capabilities CAPABILITY_NAMED_IAM --parameter-overrides MyIP=${{ secrets.MY_IP }}
 
        # test test
        #- aws cloudformation delete-stack --stack-name ${STACK_NAME} --profile ${PROFILE}
