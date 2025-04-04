@@ -73,7 +73,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0efc43a4067fe9a3e
-      InstanceType: t2.xlarge
+      InstanceType: g5.xlarge
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
@@ -105,6 +105,8 @@ Resources:
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
             python3 /aws-stablediffusion/sync-models.py
+            nohup python3 /aws-stablediffusion/main.py
+            python3 /aws-stablediffusion/script_examples/basic_api_example.py
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
