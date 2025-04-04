@@ -1,6 +1,24 @@
 {
     "model_ids": [
         1500208
-    ]
-
+    ],
+    "clip_ids": [],
+    "clip_vision_ids": [],
+    "configs_ids": [],
+    "controlnet_ids": [],
+    "diffusers_ids": [],
+    "diffusion_model_ids": [],
+    "embeddings_ids": [],
+    "gligen_ids": [],
+    "hypernetworks_ids": [],
+    "loras_ids": [],
+    "photomaker_ids": [],
+    "style_models_ids": [],
+    "text_encoders_ids": [],
+    "unet_ids": [],
+    "upscale_models_ids": [
+        164898
+    ],
+    "vae_ids": [],
+    "vae_approx_ids": []
 }

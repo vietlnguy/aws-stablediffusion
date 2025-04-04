@@ -89,14 +89,10 @@ Resources:
         Fn::Base64: !Sub 
           - |
             #!/bin/bash -xe
-            sudo -u ec2-user
-            dnf install -y python3.12 git
+            sudo dnf install -y python3.12 git
             git clone https://github.com/vietlnguy/aws-stablediffusion.git
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            python get-pip.py
-            pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
-            cd / && cd aws-stablediffusion
-            pip install -r requirements.txt
+            pip install -r /home/ec2-user/aws-stablediffusion/requirements.txt
             DEVICE_NAME="/dev/xvdf"
             MOUNT_POINT="/mnt/data"
             if ! blkid $DEVICE_NAME; then
@@ -105,10 +101,9 @@ Resources:
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
-            python /aws-stablediffusion/sync-models.py
-            export LD_LIBRARY_PATH=./venv/lib/python3.10/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH
-            python main.py && python /aws-stablediffusion/script_examples/basic_api_example.py
-            aws s3 sync /aws-stablediffusion/output s3://vietnguy-sd-output
+            python /home/ec2-user/aws-stablediffusion/sync-models.py
+            python nohup /home/ec2-user/aws-stablediffusion/main.py & python /home/ec2-user/aws-stablediffusion/script_examples/basic_api_example.py
+            aws s3 sync /home/ec2-user/aws-stablediffusion/output s3://vietnguy-sd-output
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
