@@ -3,7 +3,7 @@ Parameters:
   MyIP:
     Description: My IP address
     Type: String
-  CivitAiKey:
+  CIVITAI_KEY:
     Description: CivitAi key
     Type: String
 Resources:
@@ -103,11 +103,11 @@ Resources:
             fi
             mkdir -p $MOUNT_POINT
             mount $DEVICE_NAME $MOUNT_POINT
-            export CIVITAI_KEY=${CivitAiKey}
+            export CIVITAI_KEY=${CIVITAI_KEY}
             python3 /aws-stablediffusion/sync-models.py
             nohup python3 /aws-stablediffusion/main.py
             python3 /aws-stablediffusion/script_examples/basic_api_example.py
-          - civitaikey: !Ref CivitAiKey
+          - CIVITAI_KEY: !Ref CIVITAI_KEY
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
      Properties:
