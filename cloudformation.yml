@@ -106,7 +106,9 @@ Resources:
             export CIVITAI_KEY=${civitaikey}
             python3 /aws-stablediffusion/sync-models.py
             nohup python3 /aws-stablediffusion/main.py
+            sleep 10
             python3 /aws-stablediffusion/script_examples/basic_api_example.py
+            aws s3 sync /aws-stablediffusion/output s3://vietnguy-sd-output
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
