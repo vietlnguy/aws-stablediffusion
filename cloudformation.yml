@@ -77,7 +77,7 @@ Resources:
       KeyName: viet-key
       SecurityGroupIds:
         - !Ref SecurityGroup
-      AvailabilityZone: us-east-2a
+      AvailabilityZone: us-east-1a
       IamInstanceProfile: !Ref EC2InstanceProfile
       BlockDeviceMappings:
         - DeviceName: /dev/xvda  # Root volume
