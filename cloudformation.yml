@@ -71,9 +71,6 @@ Resources:
         - !Ref EC2S3AccessRole
   EC2Instance:
     Type: AWS::EC2::Instance
-    CreationPolicy:
-      ResourceSignal:
-        Timeout: PT60M  # CloudFormation waits up to 15 minutes
     Properties:
       ImageId: ami-0feb5cbbf7a1ebe0c
       InstanceType: g5.xlarge
@@ -128,7 +125,6 @@ Resources:
                   sleep 30
               done
               aws s3 cp $BASE_DIR s3://vietnguy-sd-output --recursive
-              /opt/aws/bin/cfn-signal --exit-code $? --stack stablediffusion --resource EC2Instance --region us-east-1
             EOF
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
