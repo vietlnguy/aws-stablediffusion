@@ -89,24 +89,27 @@ Resources:
         Fn::Base64: !Sub 
           - |
             #!/bin/bash -xe
-            sudo dnf install -y python3.12 git
-            sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
-            sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            sudo dnf install python3-pip -y
-            sudo pip3 install -r /aws-stablediffusion/requirements.txt
-            DEVICE_NAME="/dev/xvdf"
-            MOUNT_POINT="/mnt/data"
-            if ! blkid $DEVICE_NAME; then
-              mkfs -t ext4 $DEVICE_NAME
-            fi
-            sudo mkdir -p $MOUNT_POINT
-            sudo mount $DEVICE_NAME $MOUNT_POINT
-            export CIVITAI_KEY=${civitaikey}
-            sudo python3 /aws-stablediffusion/sync-models.py
-            sudo nohup python3 /aws-stablediffusion/main.py > output.log 2>&1 &
-            sudo sleep 15
-            sudo python3 /aws-stablediffusion/script_examples/basic_api_example.py
-            aws s3 cp /aws-stablediffusion/output s3://vietnguy-sd-output --recursive
+            sudo dnf install -y python3.12 git python3-pip
+            su - ec2-user <<'EOF'
+              git clone https://github.com/vietlnguy/aws-stablediffusion.git
+              curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+              python3 -m pip install -r /aws-stablediffusion/requirements.txt
+              DEVICE_NAME="/dev/xvdf"
+              MOUNT_POINT="/mnt/data"
+              if ! blkid $DEVICE_NAME; then
+                mkfs -t ext4 $DEVICE_NAME
+              fi
+              sudo mkdir -p $MOUNT_POINT
+              sudo mount $DEVICE_NAME $MOUNT_POINT
+              export CIVITAI_KEY=${civitaikey}
+              export PYTHONPATH="/usr/local/lib/python3.10/site-packages:$PYTHONPATH"
+              sudo python3 /aws-stablediffusion/sync-models.py
+              sudo nohup python3 /aws-stablediffusion/main.py > output.log 2>&1 &
+              sudo sleep 15
+              sudo python3 /aws-stablediffusion/script_examples/basic_api_example.py
+              aws s3 cp /aws-stablediffusion/output s3://vietnguy-sd-output --recursive
+            EOF
+            
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
