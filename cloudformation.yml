@@ -103,6 +103,7 @@ Resources:
               curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
               python3 -m pip install -r /home/ec2-user/aws-stablediffusion/requirements.txt
               export CIVITAI_KEY=${civitaikey}
+              sudo chown ec2-user:ec2-user /mnt/data/model-requirements-remote.json
               python3 /home/ec2-user/aws-stablediffusion/sync-models.py
               nohup python3 /home/ec2-user/aws-stablediffusion/main.py > output.log 2>&1 &
               sleep 30
