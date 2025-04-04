@@ -116,9 +116,16 @@ Resources:
                 sleep 1
               done
               python3 /home/ec2-user/aws-stablediffusion/script_examples/basic_api_example.py
+              while true; do
+                  file_count=$(find "$DIR_PATH" -maxdepth 1 -type f | wc -l)
+                  echo "Images generated: $file_count"
+                  if [ "$file_count" -ge 11 ]; then
+                      break
+                  fi
+                  sleep 30
+              done
               aws s3 cp $DIR_PATH s3://vietnguy-sd-output --recursive
             EOF
-            
           - civitaikey: !Ref CivitAiKey
   VolumeAttachment:
      Type: AWS::EC2::VolumeAttachment
