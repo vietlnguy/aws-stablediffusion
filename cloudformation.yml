@@ -106,7 +106,7 @@ Resources:
             mount $DEVICE_NAME $MOUNT_POINT
             export CIVITAI_KEY=${civitaikey}
             python /aws-stablediffusion/sync-models.py
-            export LD_LIBRARY_PATH=./venv/lib/python3.10/site-packages/nvidia/cudnn/lib:${LD_LIBRARY_PATH}
+            export LD_LIBRARY_PATH=./venv/lib/python3.10/site-packages/nvidia/cudnn/lib:\${LD_LIBRARY_PATH}
             python main.py && python /aws-stablediffusion/script_examples/basic_api_example.py
             aws s3 sync /aws-stablediffusion/output s3://vietnguy-sd-output
           - civitaikey: !Ref CivitAiKey
