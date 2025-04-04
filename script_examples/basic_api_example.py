@@ -31,11 +31,15 @@ with open(file_path, 'r') as file:
         prompt["3"]["inputs"]["seed"] = random.randint(1,4294967294)
         queue_prompt(prompt)
 
-path = os.getenv("DIR_PATH")
+
 file_count = 0;
+directory = str(os.getenv("DIR_PATH"))
+
 while file_count != (batch_size + 1):
-    _, _, files = next(os.walk(path))
-    file_count = len(files)
+    file_count = len([
+        f for f in os.listdir(directory)
+        if os.path.isfile(os.path.join(directory, f))
+    ])
+
     print("Images generated: " + str(file_count))
     time.sleep(30)
-
