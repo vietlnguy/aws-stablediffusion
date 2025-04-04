@@ -89,6 +89,7 @@ Resources:
         Fn::Base64: !Sub 
           - |
             #!/bin/bash -xe
+            cloud-init status --wait
             sudo dnf install -y python3.12 git
             sudo git clone https://github.com/vietlnguy/aws-stablediffusion.git
             sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
