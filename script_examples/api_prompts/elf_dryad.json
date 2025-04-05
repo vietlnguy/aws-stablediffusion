@@ -3,7 +3,7 @@
     "inputs": {
       "seed": 122658449490318,
       "steps": 55,
-      "cfg": 5.5,
+      "cfg": 6.2,
       "sampler_name": "euler",
       "scheduler": "normal",
       "denoise": 0.4000000000000001,
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1girl, mucha style, fantasy Drawing, A stunning elven queen with long, flowing green hair, piercing green eyes, and delicate pointed ears. She wears an ornate golden crown intertwined with leaves and flowers, symbolizing nature’s grace. Her outfit consists of intricately detailed golden armor with engraved patterns, paired with a flowing white and gold gown. She sits in an elegant pose, her expression serene yet powerful. The background features soft golden foliage and an ethereal, fantasy atmosphere. Highly detailed, masterpiece, ultra-detailed, cinematic lighting, sharp focus, smooth shading, intricate textures, fantasy illustration, art nouveau style.",
+      "text": "1girl, mucha style, fantasy Drawing, stunning red-haired female warrior in an ornate fantasy setting, wearing intricate silver and gold armor with elegant engravings. She has a confident and noble expression, her red eyes gazing into the distance. A large, beautifully crafted sword is sheathed at her side, and a flowing cape billows behind her. The background is a dreamy, decorative art nouveau design with intertwining vines and floral patterns, soft pastel colors blending into a fantasy landscape. Highly detailed, painterly style, soft shading, warm lighting, concept art, fantasy illustration, inspired by Alphonse Mucha and classical art.",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
+      "text": "low-quality details, blurry, extra limbs, deformed anatomy, low-resolution, disfigured face, bad hands, distorted proportions, unrealistic armor physics, watermark, text, poorly drawn background.",
       "clip": [
         "4",
         1
@@ -148,8 +148,8 @@
   "14": {
     "inputs": {
       "seed": 197566852166638,
-      "steps": 50,
-      "cfg": 7,
+      "steps": 55,
+      "cfg": 6.2,
       "sampler_name": "euler",
       "scheduler": "normal",
       "denoise": 0.4000000000000001,
