@@ -20,8 +20,12 @@ def queue_prompt(prompt):
     req =  request.Request("http://127.0.0.1:8188/prompt", data=data)
     request.urlopen(req)
 
+# Use this for local dev
+#file_path = 'C:/Users/viet_/CodeProjects/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
+
+#Use this for AWS dev
 file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
-batch_size = 5
+batch_size = 30
 
 with open(file_path, 'r') as file:
     prompt_text = file.read()

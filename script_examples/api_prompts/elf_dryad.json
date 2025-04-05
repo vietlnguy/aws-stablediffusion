@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       "seed": 122658449490318,
-      "steps": 50,
+      "steps": 55,
       "cfg": 7,
       "sampler_name": "euler",
       "scheduler": "normal",
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1girl, mucha style, fantasy Drawing, knight, elf, Olivine_green eyes, pointy ears, green hair, long hair, hair flower, holding, armor, leaf, shoulder armor, breasts, cleavage, pauldrons, feathers, leaf armored dress, armored boots,",
+      "text": "1girl, mucha style, fantasy Drawing, A stunning elven queen with long, flowing green hair, piercing green eyes, and delicate pointed ears. She wears an ornate golden crown intertwined with leaves and flowers, symbolizing nature’s grace. Her outfit consists of intricately detailed golden armor with engraved patterns, paired with a flowing white and gold gown. She sits in an elegant pose, her expression serene yet powerful. The background features soft golden foliage and an ethereal, fantasy atmosphere. Highly detailed, masterpiece, ultra-detailed, cinematic lighting, sharp focus, smooth shading, intricate textures, fantasy illustration, art nouveau style.",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(CyberRealistic_Negative-neg), bad-hands5, deformed, low quality, multiple hands, multiple arms, bad pose, realistic",
+      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
       "clip": [
         "4",
         1
@@ -147,7 +147,7 @@
   },
   "14": {
     "inputs": {
-      "seed": 197566852166637,
+      "seed": 197566852166638,
       "steps": 50,
       "cfg": 7,
       "sampler_name": "euler",
