@@ -1,8 +1,8 @@
 {
   "3": {
     "inputs": {
-      "seed": 920935646763302,
-      "steps": 70,
+      "seed": 742621998823246,
+      "steps": 55,
       "cfg": 6,
       "sampler_name": "euler",
       "scheduler": "normal",
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1girl, mucha style, fantasy Drawing, A regal female knight with long, flowing teal-green hair and striking green eyes, wearing elegant white and gold armor. Her armor is adorned with intricate gold trims and features shoulder pauldrons, a breastplate, and a flowing white cape. She has a calm and composed expression, exuding nobility and grace. A soft background with subtle fantasy aesthetics, painterly shading, anime-style, fantasy character concept, detailed armor.",
+      "text": "1girl, mucha style, fantasy Drawing, A teasing blonde woman with long hair tied in a high bun, adorned with a delicate hairpiece. She has striking blue eyes and is winking. She has a playful expression. She wears an elegant, fantasy-style outfit consisting of a vibrant pink and purple dress with gold embellishments, layered with a flowing lavender cape. Cute and adorable. She wears long purple gloves and a statement necklace with red gemstones. The art style is highly detailed, inspired by fantasy RPG character designs, She stands in a thoughtful pose, one hand resting on her chin, with an air of nobility and charm. A soft background with subtle fantasy aesthetics, painterly shading, anime-style, fantasy character concept,",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
+      "text": "blurry, low quality, low resolution, deformed hands, bad hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
       "clip": [
         "4",
         1
@@ -147,7 +147,7 @@
   },
   "14": {
     "inputs": {
-      "seed": 109404256230850,
+      "seed": 1104795402761821,
       "steps": 50,
       "cfg": 6,
       "sampler_name": "euler",
