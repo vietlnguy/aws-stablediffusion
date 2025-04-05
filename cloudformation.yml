@@ -119,7 +119,7 @@ Resources:
               while true; do
                   file_count=$(find "$DIR_PATH" -maxdepth 1 -type f | wc -l)
                   echo "Images generated: $file_count"
-                  if [ "$file_count" -ge 5 ]; then
+                  if [ "$file_count" -ge 30 ]; then
                       break
                   fi
                   sleep 30
