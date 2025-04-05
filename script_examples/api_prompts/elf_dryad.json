@@ -1,9 +1,9 @@
 {
   "3": {
     "inputs": {
-      "seed": 64347440215074,
-      "steps": 50,
-      "cfg": 7.0,
+      "seed": 920935646763302,
+      "steps": 70,
+      "cfg": 6,
       "sampler_name": "euler",
       "scheduler": "normal",
       "denoise": 0.4000000000000001,
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1girl, mucha style, fantasy Drawing, majestic, sleek, slender, woman, knight, red eyes, red hair, long flowy hair, silver and gold engraved armor, shoulder pauldrons, armor gauntlets, ponytail, exposed thighs, exposed skin (0.8), breasts, cleavage,",
+      "text": "1girl, mucha style, fantasy Drawing, A regal female knight with long, flowing teal-green hair and striking green eyes, wearing elegant white and gold armor. Her armor is adorned with intricate gold trims and features shoulder pauldrons, a breastplate, and a flowing white cape. She has a calm and composed expression, exuding nobility and grace. A soft background with subtle fantasy aesthetics, painterly shading, anime-style, fantasy character concept, detailed armor.",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(CyberRealistic_Negative-neg), bad-hands5, deformed, low quality, multiple hands, multiple arms, realistic, bad pose, low quality, low res, blurry, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch, duplicate, ugly, monochrome, geometry, mutation, disgusting, bad anatomy, three hands",
+      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
       "clip": [
         "4",
         1
@@ -147,7 +147,7 @@
   },
   "14": {
     "inputs": {
-      "seed": 838844639422675,
+      "seed": 109404256230850,
       "steps": 50,
       "cfg": 6,
       "sampler_name": "euler",
