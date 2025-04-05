@@ -24,7 +24,7 @@ def queue_prompt(prompt):
 #file_path = 'C:/Users/viet_/CodeProjects/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
 
 #Use this for AWS dev
-file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/elf_dryad.json'
+file_path = '/home/ec2-user/aws-stablediffusion/script_examples/api_prompts/prompt.json'
 batch_size = 40
 
 with open(file_path, 'r') as file:
