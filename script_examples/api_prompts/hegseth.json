@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 776870197684022,
+      "seed": 814111634259557,
       "steps": 45,
       "cfg": 6.5,
       "sampler_name": "euler",
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1man, mucha style, fantasy drawing, old medieval nobleman, wearing finely embroidered robes with gold accents, a velvet cloak draped over one shoulder, short graying hair and a neatly trimmed beard, a pleasant smile on his face, but with cold, calculating eyes, faint scars on his cheek, ornate rings with dark gemstones, evil look, high detail, sharp focus, anime-style, dramatic lighting, RPG character design, clean background",
+      "text": "1man, mucha style, fantasy drawing, whole-body illustration, old medieval nobleman, wearing a fancy tunic, a velvet cloak draped over one shoulder, very short gray hair and a neatly trimmed beard, a pleasant smile on his face, but with cold, calculating eyes, faint scars on his cheek, ornate rings with dark gemstones, evil look, high detail, sharp focus, anime-style, dramatic lighting, RPG character design, clean background",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
+      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting, portrait",
       "clip": [
         "4",
         1
