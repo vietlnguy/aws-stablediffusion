@@ -1,12 +1,12 @@
 {
   "3": {
     "inputs": {
-      "seed": 814111634259557,
+      "seed": 1036366601075735,
       "steps": 45,
       "cfg": 6.5,
       "sampler_name": "euler",
       "scheduler": "normal",
-      "denoise": 0.5000000000000001,
+      "denoise": 0.45000000000000007,
       "model": [
         "4",
         0
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "1man, mucha style, fantasy drawing, whole-body illustration, old medieval nobleman, wearing a fancy tunic, a velvet cloak draped over one shoulder, very short gray hair and a neatly trimmed beard, a pleasant smile on his face, but with cold, calculating eyes, faint scars on his cheek, ornate rings with dark gemstones, evil look, high detail, sharp focus, anime-style, dramatic lighting, RPG character design, clean background",
+      "text": "1man, mucha style, fantasy Drawing, crooked old man, anime, sinister nobleman with short gray hair. Wearing a white fancy tunic with a velvet sash over his shoulder, medieval fantasy setting, commanding presence, mature face, cel-shaded anime style, high detail, 4k resolution, waist-up image",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "blurry, low quality, low resolution, deformed hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting, portrait",
+      "text": "blurry, low quality, low resolution, deformed hands, bad hands, extra fingers, extra limbs, bad anatomy, bad proportions, overexposed, watermark, text, pixelated, unfinished, poor composition, unnatural lighting.",
       "clip": [
         "4",
         1
@@ -102,6 +102,15 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "model_name": "realesrganX4plus_v1.pt"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
     }
   }
 }
